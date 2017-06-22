@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include hungerstation *.css
+recursive-include hungerstation *.csv
+recursive-include hungerstation *.html
+recursive-include hungerstation *.ico
+recursive-include hungerstation *.js
+recursive-include hungerstation *.json
+recursive-include hungerstation *.md
+recursive-include hungerstation *.png
+recursive-include hungerstation *.py
+recursive-include hungerstation *.svg
+recursive-include hungerstation *.txt
+recursive-exclude hungerstation *.pyc
