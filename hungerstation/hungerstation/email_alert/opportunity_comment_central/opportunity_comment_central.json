@@ -1,0 +1,26 @@
+{
+ "attach_print": 0, 
+ "condition": "doc.communication_type == \"Comment\" and doc.comment_type == \"Comment\" and doc.reference_docType == \"Opportunity\"", 
+ "creation": "2017-06-22 13:59:53.264081", 
+ "days_in_advance": 0, 
+ "docstatus": 0, 
+ "doctype": "Email Alert", 
+ "document_type": "Communication", 
+ "enabled": 1, 
+ "event": "New", 
+ "idx": 0, 
+ "is_standard": 1, 
+ "message": "<h3>Opportunity Comment</h3>\n\n{{doc.user}} : {{doc.Message}}\n\nhungry station Notification", 
+ "modified": "2017-06-22 14:51:19.308673", 
+ "modified_by": "Administrator", 
+ "module": "hungerstation", 
+ "name": "Opportunity Comment Central", 
+ "owner": "Administrator", 
+ "recipients": [
+  {
+   "email_by_role": ""
+  }
+ ], 
+ "subject": "You Have new comment on {{doc.reference_name}}", 
+ "value_changed": ""
+}
