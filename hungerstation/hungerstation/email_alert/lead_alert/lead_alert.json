@@ -1,0 +1,23 @@
+{
+ "attach_print": 0, 
+ "condition": "", 
+ "creation": "2017-06-21 23:38:51.318557", 
+ "days_in_advance": 0, 
+ "docstatus": 0, 
+ "doctype": "Email Alert", 
+ "document_type": "Lead", 
+ "enabled": 1, 
+ "event": "New", 
+ "idx": 0, 
+ "is_standard": 1, 
+ "message": "This is a notification for a lead that is saved as an Opportunity, just a few moments ago.", 
+ "modified": "2017-06-22 15:01:30.266811", 
+ "modified_by": "Administrator", 
+ "module": "hungerstation", 
+ "name": "Lead Alert", 
+ "owner": "Administrator", 
+ "recipients": [
+  {}
+ ], 
+ "subject": "You have new Lead"
+}

@@ -1,0 +1,1 @@
+This is a notification for a lead that is saved as an Opportunity, just a few moments ago.
