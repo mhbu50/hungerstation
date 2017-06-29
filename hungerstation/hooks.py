@@ -16,7 +16,12 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/hungerstation/css/hungerstation.css"
-# app_include_js = "/assets/hungerstation/js/hungerstation.js"
+app_include_js = "assets/js/hungerstation.js"
+website_context = {
+	"favicon": 	"/assets/hungerstation/images/hungerstation-android.png",
+	"splash_image": "/assets/hungerstation/images/hungerstation-android.png"
+}
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/hungerstation/css/hungerstation.css"
@@ -27,6 +32,9 @@ app_license = "MIT"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Lead" : "public/js/Lead.js",
+"Project":"public/js/Project.js",
+"Opportunity":"public/js/Opportunity.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 
@@ -118,4 +126,3 @@ app_license = "MIT"
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "hungerstation.event.get_events"
 # }
-

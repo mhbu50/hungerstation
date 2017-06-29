@@ -1,6 +1,5 @@
 {
   "js/hungerstation.js": [
-    "public/js/conf.js",
-    "public/js/Project.js"
+    "public/js/conf.js"
   ]
 }
