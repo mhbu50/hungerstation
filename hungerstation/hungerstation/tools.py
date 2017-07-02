@@ -43,25 +43,25 @@ def after_insert_customer(doc, method):
 
  project.insert()
 
- t1 = frappe.get_doc({"doctype": "Task", "subject": "Data Entry","status":"Open","project":project.name})
+ t1 = frappe.get_doc({"doctype": "Task", "subject": doc.name + " - Data Entry","status":"Open","project":project.name})
  t1.insert()
 
- depend2 = frappe.get_doc({"doctype": "Task Depends On", "task": t1.name,"subject": "Data Entry","project":project.name})
- t2 = frappe.get_doc({"doctype": "Task", "subject": "QA","status":"Open","project":project.name})
+ depend2 = frappe.get_doc({"doctype": "Task Depends On", "task": t1.name,"subject": doc.name + " - Data Entry","project":project.name})
+ t2 = frappe.get_doc({"doctype": "Task", "subject": doc.name + " - QA","status":"Open","project":project.name})
  t2.append("depends_on", depend2)
  t2.insert()
 
- depend3 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": "QA","project":project.name})
- t3 = frappe.get_doc({"doctype": "Task", "subject": "Control","status":"Open","project":project.name})
+ depend3 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": doc.name + " - QA","project":project.name})
+ t3 = frappe.get_doc({"doctype": "Task", "subject": doc.name + " - Control","status":"Open","project":project.name})
  t3.append("depends_on", depend3)
  t3.insert()
 
- depend4 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": "Control","project":project.name})
- t4 = frappe.get_doc({"doctype": "Task", "subject": "Printer","status":"Open","project":project.name})
+ depend4 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": doc.name + " - Control","project":project.name})
+ t4 = frappe.get_doc({"doctype": "Task", "subject": doc.name + " - Printer","status":"Open","project":project.name})
  t4.append("depends_on", depend4)
  t4.insert()
 
- depend5 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": "Printer","project":project.name})
- t5 = frappe.get_doc({"doctype": "Task", "subject": "Finance","status":"Open","project":project.name})
+ depend5 = frappe.get_doc({"doctype": "Task Depends On", "task": t2.name,"subject": doc.name + " - Printer","project":project.name})
+ t5 = frappe.get_doc({"doctype": "Task", "subject": doc.name + " - Finance","status":"Open","project":project.name})
  t5.append("depends_on", depend5)
  t5.insert()
