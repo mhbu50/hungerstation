@@ -89,14 +89,12 @@ doctype_js = {
 # Hook on document methods and events
 
 doc_events = {
-	# "*": {
-	# 	"on_update": "method",
-	# 	"on_cancel": "method",
-	# 	"on_trash": "method"
-	# }
-     "Customer":
- {"after_insert":"hungerstation.hungerstation.tools.after_insert_customer"}
-}
+	"Customer": {
+ 		"after_insert":"hungerstation.hungerstation.tools.after_insert_customer" },
+	"Task":{
+  		"validate":"hungerstation.hungerstation.tools.close_documents_submission"
+		}
+ }
 
 # Scheduled Tasks
 # ---------------
