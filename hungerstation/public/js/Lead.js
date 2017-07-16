@@ -3,10 +3,11 @@ frappe.ui.form.on('Lead', {
 //     console.log("onload");
 //     $("div>ul>li:nth-child(1)>a").remove();
 //     $("a.ct-active").remove();
-// },refresh: function(frm) {
-//   console.log("refresh");
+// },
+// refresh: function(frm) {
+//   $("div.form-links").remove();
 //   $("div>ul>li:nth-child(1)>a").remove();
-//   $("a.ct-active").remove();
+//   $("div>ul>li:nth-child(3)>a").remove();
 // },
 onload_post_render: function(frm) {
   $("div.form-links").remove();

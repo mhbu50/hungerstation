@@ -1,0 +1,24 @@
+{
+ "add_total_row": 0, 
+ "apply_user_permissions": 1, 
+ "creation": "2017-07-11 22:05:22.438100", 
+ "disabled": 0, 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 0, 
+ "is_standard": "Yes", 
+ "modified": "2017-07-12 17:52:36.090175", 
+ "modified_by": "Administrator", 
+ "module": "hungerstation", 
+ "name": "Date Entry Time", 
+ "owner": "Administrator", 
+ "query": "SELECT u.full_name as \"Name:Data:200\",\n u.email as \"Email:Link/User:200\",\n(sum( DATEDIFF(t.closing_date,t.exp_start_date))/count(u.email)) as Average\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \n\nAND t.exp_start_date >= timestamp(%(from)s,%(from)s) \nand t.closing_date <= timestamp(%(to)s,%(to)s) \nand SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Data Entry'\ngroup by u.email,SUBSTRING_INDEX( t.subject,  \"-\", -1 )\n", 
+ "ref_doctype": "Task", 
+ "report_name": "Date Entry Time", 
+ "report_type": "Query Report", 
+ "roles": [
+  {
+   "role": "Projects User"
+  }
+ ]
+}

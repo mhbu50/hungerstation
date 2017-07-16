@@ -18,10 +18,9 @@ app_license = "MIT"
 # app_include_css = "/assets/hungerstation/css/hungerstation.css"
 app_include_js = "assets/js/hungerstation.js"
 website_context = {
-	"favicon": 	"/assets/hungerstation/images/hungerstation-android.png",
-	"splash_image": "/assets/hungerstation/images/hungerstation-android.png"
+    "favicon": "/assets/hungerstation/images/hungerstation-android.png",
+    "splash_image": "/assets/hungerstation/images/hungerstation-android.png"
 }
-
 
 # include js, css files in header of web template
 # web_include_css = "/assets/hungerstation/css/hungerstation.css"
@@ -33,9 +32,9 @@ website_context = {
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 doctype_js = {
-"Lead" : "public/js/Lead.js",
-"Project":"public/js/Project.js",
-"Opportunity":"public/js/Opportunity.js"
+    "Lead": "public/js/Lead.js",
+    "Project": "public/js/Project.js",
+    "Opportunity": "public/js/Opportunity.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -89,12 +88,21 @@ doctype_js = {
 # Hook on document methods and events
 
 doc_events = {
-	"Customer": {
- 		"after_insert":"hungerstation.hungerstation.tools.after_insert_customer" },
-	"Task":{
-  		"validate":"hungerstation.hungerstation.tools.close_documents_submission"
-		}
- }
+    "Customer": {
+        "after_insert":
+        "hungerstation.hungerstation.tools.after_insert_customer"
+    },
+    "Task": {
+        "validate":
+        "hungerstation.hungerstation.tools.close_documents_submission"
+    },
+    "ToDo": {
+        "validate": "hungerstation.hungerstation.tools.on_change_status_todo"
+    },
+    "Lead": {
+        "on_update": "hungerstation.hungerstation.tools.on_update_lead"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
