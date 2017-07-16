@@ -29,6 +29,12 @@ def get_data():
             {
                 "type": "report",
                 "is_query_report": True,
+                "name": "Average Duration",
+                "doctype": "Task"
+            },
+            {
+                "type": "report",
+                "is_query_report": True,
                 "name": "Project KPI",
                 "doctype": "Task"
             },
@@ -39,12 +45,7 @@ def get_data():
                 "doctype": "Customer",
                 "is_query_report": True
             },
-            # {
-            # 	"type": "report",
-            # 	"is_query_report": True,
-            # 	"name": "Customer Addresses And Contacts",
-            # 	"doctype": "Contact"
-            # },
+
             # {
             # 	"type": "report",
             # 	"is_query_report": True,
