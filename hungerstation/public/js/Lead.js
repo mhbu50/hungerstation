@@ -1,17 +1,11 @@
 frappe.ui.form.on('Lead', {
-// 	onload: function(frm) {
-//     console.log("onload");
-//     $("div>ul>li:nth-child(1)>a").remove();
-//     $("a.ct-active").remove();
-// },
-// refresh: function(frm) {
-//   $("div.form-links").remove();
-//   $("div>ul>li:nth-child(1)>a").remove();
-//   $("div>ul>li:nth-child(3)>a").remove();
-// },
-onload_post_render: function(frm) {
-  $("div.form-links").remove();
-  $("div>ul>li:nth-child(1)>a").remove();
-  $("div>ul>li:nth-child(3)>a").remove();
+refresh: function(frm) {
+    $("div.form-dashboard").remove();
+  setTimeout(function(){
+    $("div>ul>li>a:contains('Quotation')").remove();
+    $("div>ul>li>a:contains('Customer')").remove();
+  }, 150);
+},validate:function(frm){
+   frm.set_value("lead_name",frm.doc.company_name);
 }
 });
