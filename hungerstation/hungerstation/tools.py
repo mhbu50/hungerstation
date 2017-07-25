@@ -1,7 +1,9 @@
 from __future__ import unicode_literals
 import frappe
 import json
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from frappe import _
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.document import Document
