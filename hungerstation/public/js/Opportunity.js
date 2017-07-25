@@ -1,9 +1,10 @@
 frappe.ui.form.on('Opportunity', {
     refresh: function(frm) {
       $("div>ul>li>a:contains('Quotation')").remove();
-      $("div.form-links").remove();
-
-if (!frm.doc.__islocal && frm.doc.status !== "Lost" && frm.doc.status !== "Converted") {
+      $("div.form-dashboard").remove();
+console.log("ddd = ",$("div>ul>li>a:contains('Customer')"));
+if (!frm.doc.__islocal && frm.doc.status !== "Lost" && frm.doc.status !== "Converted"
+&& $("div>ul>li>a:contains('Customer')").length == 0) {
       frm.add_custom_button(__('Customer'), function() {
                   frappe.call({
                           "method": "hungerstation.hungerstation.tools.make_customer",
@@ -19,8 +20,6 @@ if (!frm.doc.__islocal && frm.doc.status !== "Lost" && frm.doc.status !== "Conve
                       }
                   });
           }, __("Make"));
-
         }
-
       }
 });
