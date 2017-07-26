@@ -84,7 +84,7 @@ def get_accounts(filters):
         if filters.get("area") != None:
             customer_filters.update({"area": filters.get("area")})
             branch_filters.update({"area": filters.get("area")})
-        customer = {}
+        #customer = {}
         customer = frappe.get_list(
             "Customer",
             filters=customer_filters,
