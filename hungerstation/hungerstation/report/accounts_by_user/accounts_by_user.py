@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2013, Accurate Systems and contributors
 # For license information, please see license.txt
 
