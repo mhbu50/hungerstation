@@ -3,6 +3,9 @@
 
 from __future__ import unicode_literals
 import frappe
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from frappe.utils import (getdate, cint, add_months, date_diff, add_days,
                           nowdate, get_datetime_str, get_datetime,
                           now_datetime)
