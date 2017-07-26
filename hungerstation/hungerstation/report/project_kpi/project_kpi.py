@@ -3,6 +3,9 @@
 
 from __future__ import unicode_literals
 import frappe
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from frappe.utils import date_diff
 
 def execute(filters=None):
