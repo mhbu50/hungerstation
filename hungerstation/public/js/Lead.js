@@ -7,5 +7,6 @@ refresh: function(frm) {
   }, 150);
 },validate:function(frm){
    frm.set_value("lead_name",frm.doc.company_name);
+    console.log("validate done");
 }
 });
