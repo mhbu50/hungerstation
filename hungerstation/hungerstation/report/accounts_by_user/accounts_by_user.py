@@ -94,7 +94,7 @@ def get_accounts(filters):
 
         for c in customer:
             customer_sum = customer_sum + 1
-            print "customer ={} owner={}  ".format(c.name, c.owner)
+            #print "customer ={} owner={}  ".format(c.name, c.owner)
             branch = frappe.get_list(
                 "Rest Branches", filters=branch_filters, fields=["*"])
             for b in branch:
