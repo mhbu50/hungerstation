@@ -1,6 +1,6 @@
 {
  "attach_print": 0, 
- "condition": "doc.communication_type == \"Comment\" and doc.comment_type == \"Comment\" and doc.reference_docType == \"Opportunity\"", 
+ "condition": "", 
  "creation": "2017-06-22 13:59:53.264081", 
  "days_in_advance": 0, 
  "docstatus": 0, 
@@ -11,7 +11,7 @@
  "idx": 0, 
  "is_standard": 1, 
  "message": "<h3>Opportunity Comment</h3>\n\n{{doc.user}} : {{doc.Message}}\n\nhungry station Notification", 
- "modified": "2017-06-22 14:51:19.308673", 
+ "modified": "2017-07-26 18:44:10.568379", 
  "modified_by": "Administrator", 
  "module": "hungerstation", 
  "name": "Opportunity Comment Central", 
