@@ -38,7 +38,7 @@
    "read_only": 0, 
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
-   "reqd": 1, 
+   "reqd": 0, 
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
@@ -84,7 +84,7 @@
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
- "modified": "2017-06-23 23:21:51.438255", 
+ "modified": "2017-07-29 13:59:01.373373", 
  "modified_by": "Administrator", 
  "module": "hungerstation", 
  "name": "Attachment Doc", 

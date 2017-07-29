@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 from . import __version__ as app_version
 
 app_name = "hungerstation"
-app_title = "hungerstation"
+app_title = "HungerStation"
 app_publisher = "Accurate Systems"
-app_description = "hungerstation"
+app_description = "HungerStation"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "mohammed.r@accuratesystems.com.sa"
@@ -34,7 +34,8 @@ website_context = {
 doctype_js = {
     "Lead": "public/js/Lead.js",
     "Project": "public/js/Project.js",
-    "Opportunity": "public/js/Opportunity.js"
+    "Opportunity": "public/js/Opportunity.js",
+    "Customer": "public/js/Customer.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -90,17 +91,22 @@ doctype_js = {
 doc_events = {
     "Customer": {
         "after_insert":
-        "hungerstation.hungerstation.tools.after_insert_customer"
+        "hungerstation.hungerstation.tools.after_insert_customer",
     },
     "Task": {
+        "autoname": "hungerstation.hungerstation.tools.set_autoname",
+        "before_insert": "hungerstation.hungerstation.tools.set_autoname",
         "validate":
-        "hungerstation.hungerstation.tools.close_documents_submission"
+        "hungerstation.hungerstation.tools.close_documents_submission",
     },
     "ToDo": {
         "validate": "hungerstation.hungerstation.tools.on_change_status_todo"
     },
     "Lead": {
         "on_update": "hungerstation.hungerstation.tools.on_update_lead"
+    },
+    "Bank": {
+        "on_trash": "hungerstation.hungerstation.tools.on_delete_bank"
     }
 }
 
