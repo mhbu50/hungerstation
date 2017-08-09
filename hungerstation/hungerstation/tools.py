@@ -8,6 +8,9 @@ from frappe import _
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.document import Document
 from frappe.utils import cstr, flt, getdate, comma_and, cint, nowdate, add_days
+from frappe.core.doctype.role.role import get_emails_from_role
+from frappe.frappeclient import FrappeClient
+from frappe.utils import get_url
 
 
 @frappe.whitelist()
@@ -230,13 +233,38 @@ def on_update_lead(doc, method):
 
 @frappe.whitelist()
 def set_autoname(doc, method):
-    print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    print "befor doc.name = {}".format(doc.name)
     doc.name = doc.subject
-    print "after doc.name = {}".format(doc.name)
 
 
-@frappe.whitelist()
-def on_delete_bank(doc, method):
-    print "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    print "on_delete_bank doc.name = {}".format(doc.name)
+def add_multiple_assignee(self):
+    if (self.name in "Documents submission"):
+        assign_to_role("")
+    elif (self.name in "Data Entry"):
+        assign_to_role("")
+    elif (self.name in " - QA"):
+        assign_to_role("")
+    elif (self.name in "AAA Reviewer"):
+        assign_to_role("")
+    elif (self.name in "Delivery Approval"):
+        assign_to_role("")
+    elif (self.name in "- Control"):
+        assign_to_role("Control A")
+    elif (self.name in "- Printer"):
+        assign_to_role("")
+    else (self.name in "- Finance"):
+        assign_to_role("")
+
+
+def assign_to_role(role):
+    emails = get_emails_from_role(recipient.email_by_role)
+    server = FrappeClient(get_url(), "Administrator", "admin", verify=False)
+
+    for email in emails:
+        server.post_request({
+            "cmd": "frappe.desk.form.assign_to.add",
+            "assign_to": email,
+            "doctype": "Task",
+            "name": "",
+            "description": "dddddddd"
+        })
+        recipients = recipients + email.split("\n")
