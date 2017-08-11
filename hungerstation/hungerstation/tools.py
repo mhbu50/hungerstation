@@ -11,6 +11,9 @@ from frappe.utils import cstr, flt, getdate, comma_and, cint, nowdate, add_days
 from frappe.core.doctype.role.role import get_emails_from_role
 from frappe.frappeclient import FrappeClient
 from frappe.utils import get_url
+from frappe.desk.form.assign_to import add
+from frappe.utils import formatdate,  \
+    get_url_to_form
 
 
 @frappe.whitelist()
@@ -63,8 +66,8 @@ def after_insert_customer(doc, method):
 
         t0 = frappe.get_doc({
             "doctype": "Task",
-            "name": doc.name + " - Documents submission",
-            "subject": doc.name + " - Documents submission",
+            "name": doc.name + " - Documents Submission",
+            "subject": doc.name + " - Documents Submission",
             "status": "Open",
             "project": project.name
         })
@@ -76,7 +79,7 @@ def after_insert_customer(doc, method):
             "task":
             t0.name,
             "subject":
-            doc.name + " - Documents submission",
+            doc.name + " - Documents Submission",
             "project":
             project.name
         })
@@ -125,7 +128,6 @@ def after_insert_customer(doc, method):
         for ro in restaurant_opp:
             print "rest type = {}".format(ro.type)
             if ro.type == "OD":
-
                 da = frappe.get_doc({
                     "doctype":
                     "Task",
@@ -187,6 +189,27 @@ def after_insert_customer(doc, method):
 
 
 @frappe.whitelist()
+def is_od(restaurant):
+    opportunity = frappe.get_list(
+        "Opportunity", filters={"title": restaurant}, fields=["name"])[0]
+    print "opportunity = {}".format(opportunity)
+    print "///////////////////////"
+    restaurant_opp = frappe.get_list(
+        "Restaurant Opp",
+        filters={"parent": ("=", opportunity.name)},
+        fields=["parent,type"])
+    print "restaurant_opp = {}".format(restaurant_opp)
+    print "///////////////////////"
+    boolean = False
+    for ro in restaurant_opp:
+        print "ro.type = {}".format(ro)
+        if ro.type == "OD":
+            boolean = True
+    print "boolean = {}".format(boolean)
+    return boolean
+
+
+@frappe.whitelist()
 def close_documents_submission(self, d):
     # print "$$$$$$$$$$$$$$$$$"
     # to DO // move task depend to loop
@@ -236,35 +259,94 @@ def set_autoname(doc, method):
     doc.name = doc.subject
 
 
-def add_multiple_assignee(self):
-    if (self.name in "Documents submission"):
-        assign_to_role("")
-    elif (self.name in "Data Entry"):
-        assign_to_role("")
-    elif (self.name in " - QA"):
-        assign_to_role("")
-    elif (self.name in "AAA Reviewer"):
-        assign_to_role("")
-    elif (self.name in "Delivery Approval"):
-        assign_to_role("")
-    elif (self.name in "- Control"):
-        assign_to_role("Control A")
-    elif (self.name in "- Printer"):
-        assign_to_role("")
-    else (self.name in "- Finance"):
-        assign_to_role("")
+def add_multiple_assignee(doc, method):
+    def assign_to_role(role, reviewer=False):
+        print "role = {}".format(role)
+        emails = get_emails_from_role(role)
+        print "####### emails = {}".format(emails)
+        name = ""
 
+        for email in emails:
+            if email == "admin@example.com":
+                continue
+            print "email = {}".format(email)
+            print "role[-2] = {}".format(role[:-2])
+            if (reviewer):
+                name = role
+            else:
+                name = role[:-2]
+            add({
+                "assign_to":
+                email,
+                "doctype":
+                "Task",
+                "name":
+                doc.project + " - " + name,
+                "description":
+                "New Task : " + doc.project + " - " + name + "<br><br>" +
+                "<a href='" + get_url_to_form("Task", doc.project + " - " +
+                                              name) +
+                "' target='_self'>&nbsp; Click Hear To open Task</a>"
+            })
 
-def assign_to_role(role):
-    emails = get_emails_from_role(recipient.email_by_role)
-    server = FrappeClient(get_url(), "Administrator", "admin", verify=False)
+    def check_arae(state):
+        if (doc.area == "AAA"):
+            assign_to_role(state + " A")
+        if (doc.area == "Central"):
+            assign_to_role(state + " C")
+        if (doc.area == "Eastern"):
+            assign_to_role(state + " E")
+        if (doc.area == "Western"):
+            assign_to_role(state + " W")
 
-    for email in emails:
-        server.post_request({
-            "cmd": "frappe.desk.form.assign_to.add",
-            "assign_to": email,
-            "doctype": "Task",
-            "name": "",
-            "description": "dddddddd"
-        })
-        recipients = recipients + email.split("\n")
+    if (doc.status == "Closed"):
+        print "doc name = {}".format(doc.name)
+        if ("Documents Submission" in doc.name):
+            print "in Documents Submission"
+            frappe.get_doc({
+                "doctype":
+                "ToDo",
+                "description":
+                "Please Assign Task : " + doc.project + " - Data Entry" +
+                "<br><br> <a href='" + get_url_to_form("Task", doc.project +
+                                                       " - Data Entry") +
+                "' target='_self'>&nbsp; Click Hear To open Task</a>",
+                "owner":
+                "heba.nabil@otlob.com"
+            }).insert()
+
+        elif ("Data Entry" in doc.name):
+            print "in Data Entry"
+            frappe.get_doc({
+                "doctype":
+                "ToDo",
+                "description":
+                "Please Assign Task : " + doc.project + " - QA" + "<br><br>" +
+                "<a href='" + get_url_to_form("Task", doc.project + " - QA") +
+                "' target='_self'>&nbsp; Click Hear To open Task</a>",
+                "owner":
+                "heba.nabil@otlob.com"
+            }).insert()
+        elif (" - QA" in doc.name):
+            # print "in QA"
+            if (doc.area == "AAA"):
+                assign_to_role("AAA Reviewer", True)
+            else:
+                check_arae("Control")
+        elif ("AAA Reviewer" in doc.name):
+            # print "in AAA Reviewer"
+            if (is_od(doc.project)):
+                assign_to_role("Delivery Approval", True)
+            else:
+                check_arae("Control")
+        elif ("Delivery Approval" in doc.name):
+            # print "in Delivery Approval"
+            check_arae("Control")
+        elif ("- Control" in doc.name):
+            # print "in Control"
+            check_arae("Printer")
+        elif ("Printer" in doc.name):
+            # print " in Printer"
+            check_arae("Finance")
+        else:
+            pass
