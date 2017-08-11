@@ -1,24 +1,24 @@
 {
- "add_total_row": 0, 
- "apply_user_permissions": 1, 
- "creation": "2017-07-13 02:28:43.632809", 
- "disabled": 0, 
- "docstatus": 0, 
- "doctype": "Report", 
- "idx": 0, 
- "is_standard": "Yes", 
- "modified": "2017-07-13 03:20:30.011769", 
- "modified_by": "Administrator", 
- "module": "hungerstation", 
- "name": "Tasks Per User", 
- "owner": "Administrator", 
- "query": "Select  tot.email as \"Email:Link/User:200\",tot.name as \"Name:Data:200\",IFNULL(tot.Total,0) as Total,IFNULL(ds.ds_data,0) as \"Documents Submission\",IFNULL(data_entry.Entry,0) as 'Data Entry' , IFNULL(QA.qa_data,0) as QA ,IFNULL(control.c_data,0) as Control,IFNULL(printer.p_data,0) as Printer,IFNULL(finance.f_data,0) as Finance\n\nfrom (SELECT u.email as email,u.full_name as name,\ncount(u.email) as Total\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \ngroup by u.email) as tot\n\nLEFT JOIN \n\n(SELECT u.email as email,\ncount(u.email) as Entry\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Data Entry'\ngroup by u.email) as data_entry \n\nON tot.email = data_entry.email\n\nLEFT JOIN \n\n(SELECT u.email as email,\ncount(u.email) as qa_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' QA'\ngroup by u.email) as QA\n\nON tot.email = QA.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as ds_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Documents submission'\ngroup by u.email) as ds\n\nON tot.email = ds.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as c_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Control'\ngroup by u.email) as control\n\nON tot.email = control.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as p_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Printer'\ngroup by u.email) as printer\n\nON tot.email = printer.email\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as f_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Finance'\ngroup by u.email) as finance\nON  tot.email = finance.email\n\n", 
- "ref_doctype": "Task", 
- "report_name": "Tasks Per User", 
- "report_type": "Query Report", 
- "roles": [
-  {
-   "role": "Projects User"
-  }
- ]
+  "add_total_row": 0,
+  "apply_user_permissions": 1,
+  "creation": "2017-07-13 02:28:43.632809",
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "idx": 0,
+  "is_standard": "Yes",
+  "modified": "2017-07-13 03:20:30.011769",
+  "modified_by": "Administrator",
+  "module": "hungerstation",
+  "name": "Tasks Per User",
+  "owner": "Administrator",
+  "query": "Select  tot.email as \"Email:Link/User:200\",tot.name as \"Name:Data:200\",IFNULL(tot.Total,0) as Total,IFNULL(ds.ds_data,0) as \"Documents Submission\",IFNULL(data_entry.Entry,0) as 'Data Entry' , IFNULL(QA.qa_data,0) as QA ,IFNULL(control.c_data,0) as Control,IFNULL(printer.p_data,0) as Printer,IFNULL(finance.f_data,0) as Finance\n\nfrom (SELECT u.email as email,u.full_name as name,\ncount(u.email) as Total\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \ngroup by u.email) as tot\n\nLEFT JOIN \n\n(SELECT u.email as email,\ncount(u.email) as Entry\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Data Entry'\ngroup by u.email) as data_entry \n\nON tot.email = data_entry.email\n\nLEFT JOIN \n\n(SELECT u.email as email,\ncount(u.email) as qa_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' QA'\ngroup by u.email) as QA\n\nON tot.email = QA.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as ds_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Documents Submission'\ngroup by u.email) as ds\n\nON tot.email = ds.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as c_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Control'\ngroup by u.email) as control\n\nON tot.email = control.email\n\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as p_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Printer'\ngroup by u.email) as printer\n\nON tot.email = printer.email\nLEFT JOIN\n\n(SELECT u.email as email,\ncount(u.email) as f_data\nFROM tabTask as t , tabUser as u\nwhere t._assign IS NOT NULL\nAND t._assign LIKE concat(\"%%\",u.email,\"%%\") \nAND SUBSTRING_INDEX(t.subject, \"-\", -1) = ' Finance'\ngroup by u.email) as finance\nON  tot.email = finance.email\n\n",
+  "ref_doctype": "Task",
+  "report_name": "Tasks Per User",
+  "report_type": "Query Report",
+  "roles": [
+    {
+      "role": "Projects User"
+    }
+  ]
 }
