@@ -6,11 +6,6 @@ frappe.ui.form.on('Customer', {
                 copy_rows_to(frm,"rest_branches",frm.doc.vendor_comany);
                 copy_rows_to(frm,"banks");
                 copy_rows_to(frm,"attachment");
-          //       frappe.run_serially([
-          //   () => copy_rows_to(frm,"banks"),
-          //   () => copy_rows_to(frm,"rest_branches",frm.doc.vendor_comany),
-          //   () => copy_rows_to(frm,"attachment")
-          // ]);
               }
             });
 
@@ -28,7 +23,7 @@ frappe.ui.form.on('Customer', {
                       restaurant_name = row.parent;
                   }
                     var row1 = jQuery.extend({}, row);
-                    row1.parent = restaurant_name +" - Documents submission";
+                    row1.parent = restaurant_name +" - Documents Submission";
                     docs.push(row1);
                     var row2 = jQuery.extend({}, row);
                     row2.parent = restaurant_name +" - Data Entry";
