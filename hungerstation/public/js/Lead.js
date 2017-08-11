@@ -1,6 +1,6 @@
 frappe.ui.form.on('Lead', {
 refresh: function(frm) {
-    $("div.form-dashboard").remove();
+    $("div.form-dashboard").hide();
   setTimeout(function(){
     $("div>ul>li>a:contains('Quotation')").remove();
     $("div>ul>li>a:contains('Customer')").remove();

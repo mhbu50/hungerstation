@@ -94,10 +94,14 @@ doc_events = {
         "hungerstation.hungerstation.tools.after_insert_customer",
     },
     "Task": {
-        "autoname": "hungerstation.hungerstation.tools.set_autoname",
-        "before_insert": "hungerstation.hungerstation.tools.set_autoname",
+        "autoname":
+        "hungerstation.hungerstation.tools.set_autoname",
+        "before_insert":
+        "hungerstation.hungerstation.tools.set_autoname",
         "validate":
         "hungerstation.hungerstation.tools.close_documents_submission",
+        "on_update":
+        "hungerstation.hungerstation.tools.add_multiple_assignee"
     },
     "ToDo": {
         "validate": "hungerstation.hungerstation.tools.on_change_status_todo"
