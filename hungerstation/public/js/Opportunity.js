@@ -1,7 +1,7 @@
 frappe.ui.form.on('Opportunity', {
     refresh: function(frm) {
       $("div>ul>li>a:contains('Quotation')").remove();
-      $("div.form-dashboard").remove();
+      $("div.form-dashboard").hide();
 console.log("ddd = ",$("div>ul>li>a:contains('Customer')"));
 if (!frm.doc.__islocal && frm.doc.status !== "Lost" && frm.doc.status !== "Converted"
 && $("div>ul>li>a:contains('Customer')").length == 0) {
