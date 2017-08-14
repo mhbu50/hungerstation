@@ -313,7 +313,7 @@ def add_multiple_assignee(doc, method):
                 "' target='_self'>&nbsp; Click Hear To open Task</a>",
                 "owner":
                 "heba.nabil@otlob.com"
-            }).insert()
+            }).insert(ignore_permissions=True)
 
         elif ("Data Entry" in doc.name):
             print "in Data Entry"
@@ -326,7 +326,7 @@ def add_multiple_assignee(doc, method):
                 "' target='_self'>&nbsp; Click Hear To open Task</a>",
                 "owner":
                 "heba.nabil@otlob.com"
-            }).insert()
+            }).insert(ignore_permissions=True)
         elif (" - QA" in doc.name):
             # print "in QA"
             if (doc.area == "AAA"):
