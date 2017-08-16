@@ -331,6 +331,8 @@ def add_multiple_assignee(doc, method):
             # print "in QA"
             if (doc.area == "AAA"):
                 assign_to_role("AAA Reviewer", True)
+            elif (is_od(doc.project)):
+                assign_to_role("Delivery Approval", True)
             else:
                 check_arae("Control")
         elif ("AAA Reviewer" in doc.name):
@@ -348,5 +350,5 @@ def add_multiple_assignee(doc, method):
         elif ("Printer" in doc.name):
             # print " in Printer"
             check_arae("Finance")
-        else:
+        else: # set project status as cpmpleted
             pass
