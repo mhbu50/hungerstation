@@ -54,11 +54,25 @@ def make_customer(doc):
 
 @frappe.whitelist()
 def after_insert_customer(doc, method):
+    def get_restaurant(customer):
+        print "list opp = {} for customer = {} $".format(
+            frappe.get_list(
+                "Opportunity", filters={"title": customer}, fields=["name"]),
+            customer)
+        opportunity = frappe.get_list(
+            "Opportunity", filters={"title": customer}, fields=["name"])[0]
+
+        restaurant_opp = frappe.get_list(
+            "Restaurant Opp",
+            filters={"parent": ("=", opportunity.name)},
+            fields=["*"])
+        return restaurant_opp
+
     if doc.customer_type == "Company":
         project = frappe.get_doc({
             "doctype": "Project",
             "project_name": doc.name,
-            "status": "New",
+            "status": "Open",
             "customer": doc.name
         })
 
@@ -69,6 +83,7 @@ def after_insert_customer(doc, method):
             "name": doc.name + " - Documents Submission",
             "subject": doc.name + " - Documents Submission",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         t0.insert()
@@ -88,6 +103,7 @@ def after_insert_customer(doc, method):
             "name": doc.name + " - Data Entry",
             "subject": doc.name + " - Data Entry",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         # t1.append("depends_on", depend1)
@@ -103,6 +119,7 @@ def after_insert_customer(doc, method):
             "doctype": "Task",
             "subject": doc.name + " - QA",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         # t2.append("depends_on", depend2)
@@ -113,6 +130,7 @@ def after_insert_customer(doc, method):
                 "doctype": "Task",
                 "subject": doc.name + " - AAA Reviewer",
                 "status": "Open",
+                "restaurant": get_restaurant(project.name),
                 "project": project.name
             })
             # t2.append("depends_on", depend2)
@@ -135,6 +153,8 @@ def after_insert_customer(doc, method):
                     doc.name + " - Delivery Approval",
                     "status":
                     "Open",
+                    "restaurant":
+                    get_restaurant(project.name),
                     "project":
                     project.name
                 })
@@ -152,10 +172,13 @@ def after_insert_customer(doc, method):
             "doctype": "Task",
             "subject": doc.name + " - Control",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         # t3.append("depends_on", depend3)
         t3.insert()
+
+        print "project.name = {} doc.name  = {}".format(project.name, doc.name)
 
         depend4 = frappe.get_doc({
             "doctype": "Task Depends On",
@@ -167,6 +190,7 @@ def after_insert_customer(doc, method):
             "doctype": "Task",
             "subject": doc.name + " - Printer",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         # t4.append("depends_on", depend4)
@@ -182,6 +206,7 @@ def after_insert_customer(doc, method):
             "doctype": "Task",
             "subject": doc.name + " - Finance",
             "status": "Open",
+            "restaurant": get_restaurant(project.name),
             "project": project.name
         })
         # t5.append("depends_on", depend5)
@@ -298,6 +323,10 @@ def add_multiple_assignee(doc, method):
             assign_to_role(state + " E")
         if (doc.area == "Western"):
             assign_to_role(state + " W")
+        if (doc.area == "Southern"):
+            assign_to_role(state + " S")
+        if (doc.area == "Bahrain"):
+            assign_to_role(state + " B")
 
     if (doc.status == "Closed"):
         print "doc name = {}".format(doc.name)
