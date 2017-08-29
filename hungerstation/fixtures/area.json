@@ -1,0 +1,58 @@
+[
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:43:21.547413", 
+  "name": "Southern"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:43:21.550014", 
+  "name": "Northern"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:43:21.552516", 
+  "name": "Eastern"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:43:21.606238", 
+  "name": "Western"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:43:21.622394", 
+  "name": "Central"
+ }, 
+ {
+  "area": "AAA", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-06 22:58:38.603661", 
+  "name": "AAA"
+ }, 
+ {
+  "area": "Bahrain", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-27 14:17:41.321688", 
+  "name": "Bahrain"
+ }, 
+ {
+  "area": "Al kharj", 
+  "docstatus": 0, 
+  "doctype": "Area", 
+  "modified": "2017-07-28 06:03:12.561120", 
+  "name": "Al kharj"
+ }
+]

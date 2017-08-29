@@ -1,0 +1,618 @@
+[
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:49.906301", 
+  "name": "Qassim", 
+  "name1": "Qassim"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:49.915515", 
+  "name": "Baljurashi", 
+  "name1": "Baljurashi"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:49.918452", 
+  "name": "Dumah Al Jandal", 
+  "name1": "Dumah Al Jandal"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.014614", 
+  "name": "Anak", 
+  "name1": "Anak"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.022296", 
+  "name": "Ahsa", 
+  "name1": "Ahsa"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.028869", 
+  "name": "Thebea", 
+  "name1": "Thebea"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.034803", 
+  "name": "Sharorah", 
+  "name1": "Sharorah "
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.040396", 
+  "name": "Khulais", 
+  "name1": "Khulais"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.046049", 
+  "name": "King Abdullah Economic City", 
+  "name1": "King Abdullah Economic City"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.050658", 
+  "name": "Muhayil", 
+  "name1": "Muhayil"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.055005", 
+  "name": "Salwa", 
+  "name1": "Salwa"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.059012", 
+  "name": "Al Badayea", 
+  "name1": "Al Badayea"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.062738", 
+  "name": "Harmah", 
+  "name1": "Harmah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.066386", 
+  "name": "Ad Dubaiyah", 
+  "name1": "Ad Dubaiyah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.070180", 
+  "name": "Ad Dilam", 
+  "name1": "Ad Dilam"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.073508", 
+  "name": "Al-Theebiyah", 
+  "name1": "Al-Theebiyah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.076766", 
+  "name": "Al Quwaiiyah", 
+  "name1": "Al Quwaiiyah"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.080049", 
+  "name": "jwatha", 
+  "name1": "jwatha"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.083243", 
+  "name": "Howtat Bani Tamim", 
+  "name1": "Howtat Bani Tamim"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.086303", 
+  "name": "Al Hayathem", 
+  "name1": "Al Hayathem"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.089377", 
+  "name": "Al Oyun", 
+  "name1": "Al Oyun"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.092673", 
+  "name": "Qaryat al ulya", 
+  "name1": "Qaryat al ulya"
+ }, 
+ {
+  "area": "AAA", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.095525", 
+  "name": "AAA", 
+  "name1": "AAA"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.099000", 
+  "name": "Al qaisumah", 
+  "name1": "Al qaisumah"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.102097", 
+  "name": "Al Uwayqilah", 
+  "name1": "Al Uwayqilah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.105137", 
+  "name": "Al Muzahimiyah", 
+  "name1": "Al Muzahimiyah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.107961", 
+  "name": "Afif", 
+  "name1": "Afif"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.110786", 
+  "name": "Al Mithnab", 
+  "name1": "Al Mithnab"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.113651", 
+  "name": "Al Bukayriyah", 
+  "name1": "Al Bukayriyah"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.116537", 
+  "name": "Ahad Rafidah", 
+  "name1": "Ahad Rafidah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.119801", 
+  "name": "Riyadh Al Khabra", 
+  "name1": "Riyadh Al Khabra"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.122770", 
+  "name": "Al Namas", 
+  "name1": "Al Namas"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.125707", 
+  "name": "arar", 
+  "name1": "arar"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.128595", 
+  "name": "Tarout", 
+  "name1": "Tarout "
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.131387", 
+  "name": "Al Qunfudhah", 
+  "name1": "Al Qunfudhah"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.134192", 
+  "name": "Bishah", 
+  "name1": "Bishah"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.136959", 
+  "name": "Rafha", 
+  "name1": "Rafha"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.139842", 
+  "name": "Qurayat", 
+  "name1": "Qurayat"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.142738", 
+  "name": "Taurif", 
+  "name1": "Taurif"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.145525", 
+  "name": "Zulfi", 
+  "name1": "Zulfi"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.148296", 
+  "name": "Dhahran", 
+  "name1": "Dhahran "
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.151087", 
+  "name": "Abu Arish", 
+  "name1": "Abu Arish"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.153921", 
+  "name": "Al Mubarraz", 
+  "name1": "Al Mubarraz"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.156690", 
+  "name": "Unayzah", 
+  "name1": "Unayzah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.159600", 
+  "name": "Ad Duwadimi", 
+  "name1": "Ad Duwadimi"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.162441", 
+  "name": "Rabigh", 
+  "name1": "Rabigh"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.165205", 
+  "name": "Shaqra", 
+  "name1": "Shaqra"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.167997", 
+  "name": "Al Majmaah", 
+  "name1": "Al Majmaah"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.170817", 
+  "name": "Ar Rass", 
+  "name1": "Ar Rass"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.173701", 
+  "name": "Safwa", 
+  "name1": "Safwa"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.176450", 
+  "name": "Nariyah", 
+  "name1": "Nariyah"
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.179171", 
+  "name": "Sakakah", 
+  "name1": "Sakakah"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.181941", 
+  "name": "Buqayq", 
+  "name1": "Buqayq"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.184696", 
+  "name": "Al Khafji", 
+  "name1": "Al Khafji"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.187465", 
+  "name": "Tabuk", 
+  "name1": "Tabuk"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.190233", 
+  "name": "Sayhat", 
+  "name1": "Sayhat"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.192989", 
+  "name": "Hafar Al Batin", 
+  "name1": "Hafar Al Batin"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.195772", 
+  "name": "Al Jubail", 
+  "name1": "Al Jubail"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.198562", 
+  "name": "At Taif", 
+  "name1": "At Taif"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.201407", 
+  "name": "Al Qatif", 
+  "name1": "Al Qatif"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.204178", 
+  "name": "Najran", 
+  "name1": "Najran "
+ }, 
+ {
+  "area": "Northern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.206960", 
+  "name": "Hail", 
+  "name1": "Hail "
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.209725", 
+  "name": "Jazan", 
+  "name1": "Jazan "
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.212505", 
+  "name": "Buraydah", 
+  "name1": "Buraydah"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.215293", 
+  "name": "Khamis Mushayt", 
+  "name1": "Khamis Mushayt"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.218093", 
+  "name": "Al Kharj", 
+  "name1": "Al Kharj"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.220870", 
+  "name": "Abha", 
+  "name1": "Abha"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.223730", 
+  "name": "Ras Tannurah", 
+  "name1": "Ras Tannurah"
+ }, 
+ {
+  "area": "Southern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.227141", 
+  "name": "Al Baha", 
+  "name1": "Al Baha "
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.230249", 
+  "name": "Al Madinah Al Munawwarah", 
+  "name1": "Al Madinah Al Munawwarah "
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.233232", 
+  "name": "Yanbu", 
+  "name1": "Yanbu"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.236193", 
+  "name": "Mecca", 
+  "name1": "Mecca"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.239221", 
+  "name": "Al Hofuf", 
+  "name1": "Al Hofuf "
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.242328", 
+  "name": "Al Khobar", 
+  "name1": "Al Khobar"
+ }, 
+ {
+  "area": "Central", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.257029", 
+  "name": "Riyadh", 
+  "name1": "Riyadh"
+ }, 
+ {
+  "area": "Western", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.259894", 
+  "name": "Jeddah", 
+  "name1": "Jeddah"
+ }, 
+ {
+  "area": "Eastern", 
+  "docstatus": 0, 
+  "doctype": "City", 
+  "modified": "2017-07-06 22:58:50.262550", 
+  "name": "Dammam", 
+  "name1": "Dammam"
+ }
+]
