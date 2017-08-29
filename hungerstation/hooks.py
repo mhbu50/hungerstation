@@ -13,7 +13,7 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+fixtures = ["Role", "City", "Area"]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/hungerstation/css/hungerstation.css"
 app_include_js = "assets/js/hungerstation.js"
