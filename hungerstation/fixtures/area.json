@@ -1,58 +1,66 @@
 [
  {
   "area": "Southern", 
+  "area_code": "S", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:43:21.547413", 
+  "modified": "2017-08-30 03:17:03.383647", 
   "name": "Southern"
  }, 
  {
   "area": "Northern", 
+  "area_code": "N", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:43:21.550014", 
+  "modified": "2017-08-30 03:16:59.126798", 
   "name": "Northern"
  }, 
  {
   "area": "Eastern", 
+  "area_code": "E", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:43:21.552516", 
+  "modified": "2017-08-30 03:16:52.782752", 
   "name": "Eastern"
  }, 
  {
   "area": "Western", 
+  "area_code": "W", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:43:21.606238", 
+  "modified": "2017-08-30 03:16:47.882475", 
   "name": "Western"
  }, 
  {
   "area": "Central", 
+  "area_code": "C", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:43:21.622394", 
+  "modified": "2017-08-30 03:16:42.754817", 
   "name": "Central"
  }, 
  {
   "area": "AAA", 
+  "area_code": "A", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-06 22:58:38.603661", 
+  "modified": "2017-08-30 03:16:21.659614", 
   "name": "AAA"
  }, 
  {
   "area": "Bahrain", 
+  "area_code": "B", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-27 14:17:41.321688", 
+  "modified": "2017-08-30 03:16:34.418665", 
   "name": "Bahrain"
  }, 
  {
   "area": "Al kharj", 
+  "area_code": "K", 
   "docstatus": 0, 
   "doctype": "Area", 
-  "modified": "2017-07-28 06:03:12.561120", 
+  "modified": "2017-08-30 03:17:11.319118", 
   "name": "Al kharj"
  }
 ]
