@@ -43,6 +43,7 @@ def make_customer(doc):
             "area": doc['area']
         })
         customer2.insert()
+
     frappe.db.set_value(
         'Lead',
         doc["lead"],
@@ -236,8 +237,7 @@ def is_od(restaurant):
 
 @frappe.whitelist()
 def close_documents_submission(self, d):
-    # print "$$$$$$$$$$$$$$$$$"
-    # to DO // move task depend to loop
+    # TODO: move task depend to loop
     if self.status == "Closed" and self.closing_date is None:
         self.closing_date = nowdate()
     if self.status == "Closed" and " - Documents Submission" in self.subject:
@@ -261,6 +261,7 @@ def close_documents_submission(self, d):
 
 @frappe.whitelist()
 def on_change_status_todo(doc, method):
+    # TODO: if all tasks are closed then close project
     if doc.status == "Closed":
         if doc.closing_date == None:
             doc.closing_date = nowdate()
@@ -323,8 +324,8 @@ def add_multiple_assignee(doc, method):
             assign_to_role(state + " E")
         if (doc.area == "Western"):
             assign_to_role(state + " W")
-        if (doc.area == "Southern"):
-            assign_to_role(state + " S")
+        if (doc.area == "Northern"):
+            assign_to_role(state + " N")
         if (doc.area == "Bahrain"):
             assign_to_role(state + " B")
 
@@ -343,6 +344,7 @@ def add_multiple_assignee(doc, method):
                 "owner":
                 "heba.nabil@otlob.com"
             }).insert(ignore_permissions=True)
+            # TODO:create sitting screen for defult email
 
         elif ("Data Entry" in doc.name):
             print "in Data Entry"
@@ -371,7 +373,6 @@ def add_multiple_assignee(doc, method):
             else:
                 check_arae("Control")
         elif ("Delivery Approval" in doc.name):
-            # print "in Delivery Approval"
             check_arae("Control")
         elif ("- Control" in doc.name):
             # print "in Control"
@@ -379,5 +380,5 @@ def add_multiple_assignee(doc, method):
         elif ("Printer" in doc.name):
             # print " in Printer"
             check_arae("Finance")
-        else: # set project status as cpmpleted
+        else:  # set project status as cpmpleted
             pass
