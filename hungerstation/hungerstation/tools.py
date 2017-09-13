@@ -216,11 +216,11 @@ def after_insert_customer(doc, method):
 
 @frappe.whitelist()
 def is_od(restaurant):
-    opportunity = frappe.get_list(
+    opportunity = frappe.get_all(
         "Opportunity", filters={"title": restaurant}, fields=["name"])[0]
     print "opportunity = {}".format(opportunity)
     print "///////////////////////"
-    restaurant_opp = frappe.get_list(
+    restaurant_opp = frappe.get_all(
         "Restaurant Opp",
         filters={"parent": ("=", opportunity.name)},
         fields=["parent,type"])
