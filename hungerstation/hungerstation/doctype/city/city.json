@@ -3,7 +3,7 @@
  "allow_guest_to_view": 0, 
  "allow_import": 1, 
  "allow_rename": 1, 
- "autoname": "field:name1", 
+ "autoname": "CITY.####", 
  "beta": 0, 
  "creation": "2017-05-28 14:43:58.164128", 
  "custom": 0, 
@@ -85,7 +85,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2017-07-23 14:31:53.715219", 
+ "modified": "2017-09-11 14:07:41.066416", 
  "modified_by": "Administrator", 
  "module": "hungerstation", 
  "name": "City", 
@@ -179,6 +179,7 @@
  "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
+ "title_field": "name1", 
  "track_changes": 1, 
  "track_seen": 0
 }
