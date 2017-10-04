@@ -60,14 +60,15 @@ def after_insert_customer(doc, method):
             frappe.get_list(
                 "Opportunity", filters={"title": customer}, fields=["name"]),
             customer)
-        opportunity = frappe.get_list(
-            "Opportunity", filters={"title": customer}, fields=["name"])[0]
-
-        restaurant_opp = frappe.get_list(
-            "Restaurant Opp",
-            filters={"parent": ("=", opportunity.name)},
-            fields=["*"])
-        return restaurant_opp
+        opportunity = (frappe.get_list(
+            "Opportunity", filters={"title": customer}, fields=["name"]) or
+                       [None])[0]
+        if opportunity:
+            restaurant_opp = frappe.get_list(
+                "Restaurant Opp",
+                filters={"parent": ("=", opportunity.name)},
+                fields=["*"])
+            return restaurant_opp
 
     if doc.customer_type == "Company":
         project = frappe.get_doc({
@@ -216,8 +217,9 @@ def after_insert_customer(doc, method):
 
 @frappe.whitelist()
 def is_od(restaurant):
-    opportunity = frappe.get_all(
-        "Opportunity", filters={"title": restaurant}, fields=["name"])[0]
+    opportunity = (frappe.get_all(
+        "Opportunity", filters={"title": restaurant}, fields=["name"]) or
+                   [None])[0]
     print "opportunity = {}".format(opportunity)
     print "///////////////////////"
     restaurant_opp = frappe.get_all(
