@@ -328,6 +328,8 @@ def add_multiple_assignee(doc, method):
             assign_to_role(state + " W")
         if (doc.area == "Northern"):
             assign_to_role(state + " N")
+        if (doc.area == "Southern"):
+            assign_to_role(state + " S")
         if (doc.area == "Bahrain"):
             assign_to_role(state + " B")
 
