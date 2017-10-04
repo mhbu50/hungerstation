@@ -23,3 +23,7 @@ if (!frm.doc.__islocal && frm.doc.status !== "Lost" && frm.doc.status !== "Conve
         }
       }
 });
+
+$(document).on('page-change', function(e) {
+	 $("div.form-dashboard").show();
+});
