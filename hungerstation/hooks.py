@@ -34,8 +34,7 @@ website_context = {
 doctype_js = {
     "Lead": "public/js/Lead.js",
     "Project": "public/js/Project.js",
-    "Opportunity": "public/js/Opportunity.js",
-    "Customer": "public/js/Customer.js"
+    "Opportunity": "public/js/Opportunity.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -92,14 +91,17 @@ doc_events = {
     "Customer": {
         "after_insert":
         "hungerstation.hungerstation.tools.after_insert_customer",
+        "validate": "hungerstation.hungerstation.tools.validate_children"
     },
     "Task": {
         "autoname":
         "hungerstation.hungerstation.tools.set_autoname",
         "before_insert":
         "hungerstation.hungerstation.tools.set_autoname",
-        "validate":
-        "hungerstation.hungerstation.tools.close_documents_submission",
+        "validate": [
+            "hungerstation.hungerstation.tools.validate_children",
+            "hungerstation.hungerstation.tools.close_documents_submission"
+        ],
         "on_update":
         "hungerstation.hungerstation.tools.add_multiple_assignee"
     },
