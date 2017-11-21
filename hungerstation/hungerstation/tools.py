@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import frappe
 import json
 import sys
+from copy import deepcopy
 reload(sys)
 sys.setdefaultencoding('utf-8')
 from frappe import _
@@ -14,6 +15,7 @@ from frappe.utils import get_url
 from frappe.desk.form.assign_to import add
 from frappe.utils import formatdate,  \
     get_url_to_form
+import pudb
 
 
 @frappe.whitelist()
@@ -216,24 +218,75 @@ def after_insert_customer(doc, method):
 
 
 @frappe.whitelist()
+def validate_children(doc, method):
+    original_parent = doc.subject
+    print "doc = {}".format(frappe.as_json(doc))
+    # pudb.set_trace()
+    customer_name = ""
+    if doc.doctype == "Customer":
+        customer_name = doc.name
+    else:
+        customer_name = doc.project
+    children = doc.get_all_children()
+    # print "children = {}".format(frappe.as_json(children))
+    for d in children:
+        d.parenttype = "Task"
+        d.parent = customer_name + " - Documents Submission"
+        row1 = deepcopy(d)
+        save_or_update(row1)
+
+        d.parent = customer_name + " - Data Entry"
+        row2 = deepcopy(d)
+        save_or_update(row2)
+
+        d.parent = customer_name + " - QA"
+        row3 = deepcopy(d)
+        save_or_update(row3)
+
+        if (doc.area == "AAA"):
+            d.parent = customer_name + " - AAA Reviewer"
+            row4 = deepcopy(d)
+            save_or_update(row4)
+
+        if (is_od(customer_name)):
+            d.parent = customer_name + " - Delivery Approval"
+            row5 = deepcopy(d)
+            save_or_update(row5)
+
+        d.parent = customer_name + " - Control"
+        row6 = deepcopy(d)
+        save_or_update(row6)
+
+        d.parent = customer_name + " - Printer"
+        row7 = deepcopy(d)
+        save_or_update(row7)
+
+        d.parent = customer_name + " - Finance"
+        row8 = deepcopy(d)
+        save_or_update(row8)
+        print "///////////////////////// new Row"
+        d.parent = original_parent
+
+
+@frappe.whitelist()
 def is_od(restaurant):
     opportunity = (frappe.get_all(
         "Opportunity", filters={"title": restaurant}, fields=["name"]) or
                    [None])[0]
-    print "opportunity = {}".format(opportunity)
-    print "///////////////////////"
-    restaurant_opp = frappe.get_all(
-        "Restaurant Opp",
-        filters={"parent": ("=", opportunity.name)},
-        fields=["parent,type"])
-    print "restaurant_opp = {}".format(restaurant_opp)
-    print "///////////////////////"
+    # print "opportunity = {}".format(opportunity)
+    # print "///////////////////////"
     boolean = False
-    for ro in restaurant_opp:
-        print "ro.type = {}".format(ro)
-        if ro.type == "OD":
-            boolean = True
-    print "boolean = {}".format(boolean)
+    if opportunity:
+        restaurant_opp = frappe.get_all(
+            "Restaurant Opp",
+            filters={"parent": ("=", opportunity.name)},
+            fields=["parent,type"])
+
+        for ro in restaurant_opp:
+            # print "ro.type = {}".format(ro)
+            if ro.type == "OD":
+                boolean = True
+        # print "boolean = {}".format(boolean)
     return boolean
 
 
@@ -289,11 +342,9 @@ def set_autoname(doc, method):
 
 def add_multiple_assignee(doc, method):
     def assign_to_role(role, reviewer=False):
-        print "role = {}".format(role)
         emails = get_emails_from_role(role)
-        print "####### emails = {}".format(emails)
+        print "####### role = {} emails = {}".format(role, emails)
         name = ""
-
         for email in emails:
             if email == "admin@example.com":
                 continue
@@ -386,3 +437,43 @@ def add_multiple_assignee(doc, method):
             check_arae("Finance")
         else:  # set project status as cpmpleted
             pass
+
+
+def save_or_update(self):
+    print "\n"
+    print "in save_or_update"
+    if self.get("__islocal"):
+        d = self.get_valid_dict()
+        print "d.values() = {}".format(frappe.as_json(d.values()))
+        self.db_insert()
+        # print "self = {}".format(frappe.as_json(self.parent))
+        return
+
+    d = self.get_valid_dict()
+
+    # don't update name, as case might've been changed
+    idx = d['idx']
+    parent = d['parent']
+    name = d['name']
+    del d['name']
+    del d['parent']
+    del d['idx']
+    # print "name = {} doctype = {} parent = {}".format(name, self.doctype,
+    #   parent)
+    # need to fix update
+    columns = d.keys()
+
+    try:
+        frappe.db.sql(
+            """update `tab{doctype}`
+            set {values} where SUBSTRING_INDEX(%s,  " - ", 1 ) = SUBSTRING_INDEX( parent,  " - ", 1 )  and idx = {idx}"""
+            .format(
+                idx=idx,
+                doctype=self.doctype,
+                values=", ".join(["`" + c + "`=%s" for c in columns])),
+            list(d.values()) + [parent])
+    except Exception as e:
+        if e.args[0] == 1062 and "Duplicate" in cstr(e.args[1]):
+            self.show_unique_validation_message(e)
+        else:
+            raise
