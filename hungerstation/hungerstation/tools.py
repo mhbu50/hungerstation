@@ -15,6 +15,7 @@ from frappe.utils import get_url
 from frappe.desk.form.assign_to import add
 from frappe.utils import formatdate,  \
     get_url_to_form
+import pudb
 
 
 @frappe.whitelist()
@@ -218,58 +219,53 @@ def after_insert_customer(doc, method):
 
 @frappe.whitelist()
 def validate_children(doc, method):
-    print "////////////////////////////////"
-    print "validate_children of {}".format(doc.doctype)
+    original_parent = doc.subject
+    print "doc = {}".format(frappe.as_json(doc))
+    # pudb.set_trace()
     customer_name = ""
     if doc.doctype == "Customer":
         customer_name = doc.name
     else:
         customer_name = doc.project
     children = doc.get_all_children()
+    # print "children = {}".format(frappe.as_json(children))
     for d in children:
-        if (d.doctype in ["Bank", "Attachment Doc"]):
-            d.parenttype = "Task"
-            # d.name = customer_name + " - Documents Submission"
-            d.parent = customer_name + " - Documents Submission"
-            row1 = deepcopy(d)
-            save_or_update(row1)
+        d.parenttype = "Task"
+        d.parent = customer_name + " - Documents Submission"
+        row1 = deepcopy(d)
+        save_or_update(row1)
 
-            # d.name = customer_name + " - Data Entry"
-            d.parent = customer_name + " - Data Entry"
-            row2 = deepcopy(d)
-            save_or_update(row2)
+        d.parent = customer_name + " - Data Entry"
+        row2 = deepcopy(d)
+        save_or_update(row2)
 
-            # d.name = customer_name + " - QA"
-            d.parent = customer_name + " - QA"
-            row3 = deepcopy(d)
-            save_or_update(row3)
+        d.parent = customer_name + " - QA"
+        row3 = deepcopy(d)
+        save_or_update(row3)
 
-            if (doc.area == "AAA"):
-                # d.name = customer_name + " - AAA Reviewer"
-                d.parent = customer_name + " - AAA Reviewer"
-                row4 = deepcopy(d)
-                save_or_update(row4)
+        if (doc.area == "AAA"):
+            d.parent = customer_name + " - AAA Reviewer"
+            row4 = deepcopy(d)
+            save_or_update(row4)
 
-            if (is_od(customer_name)):
-                # d.name = customer_name + " - Delivery Approval"
-                d.parent = customer_name + " - Delivery Approval"
-                row5 = deepcopy(d)
-                save_or_update(row5)
+        if (is_od(customer_name)):
+            d.parent = customer_name + " - Delivery Approval"
+            row5 = deepcopy(d)
+            save_or_update(row5)
 
-            # d.name = customer_name + " - Control"
-            d.parent = customer_name + " - Control"
-            row6 = deepcopy(d)
-            save_or_update(row6)
+        d.parent = customer_name + " - Control"
+        row6 = deepcopy(d)
+        save_or_update(row6)
 
-            # d.name = customer_name + " - Printer"
-            d.parent = customer_name + " - Printer"
-            row7 = deepcopy(d)
-            save_or_update(row7)
+        d.parent = customer_name + " - Printer"
+        row7 = deepcopy(d)
+        save_or_update(row7)
 
-            # d.name = customer_name + " - Finance"
-            d.parent = customer_name + " - Finance"
-            row8 = deepcopy(d)
-            save_or_update(row8)
+        d.parent = customer_name + " - Finance"
+        row8 = deepcopy(d)
+        save_or_update(row8)
+        print "///////////////////////// new Row"
+        d.parent = original_parent
 
 
 @frappe.whitelist()
@@ -279,18 +275,18 @@ def is_od(restaurant):
                    [None])[0]
     # print "opportunity = {}".format(opportunity)
     # print "///////////////////////"
-    restaurant_opp = frappe.get_all(
-        "Restaurant Opp",
-        filters={"parent": ("=", opportunity.name)},
-        fields=["parent,type"])
-    # print "restaurant_opp = {}".format(restaurant_opp)
-    # print "///////////////////////"
     boolean = False
-    for ro in restaurant_opp:
-        # print "ro.type = {}".format(ro)
-        if ro.type == "OD":
-            boolean = True
-    # print "boolean = {}".format(boolean)
+    if opportunity:
+        restaurant_opp = frappe.get_all(
+            "Restaurant Opp",
+            filters={"parent": ("=", opportunity.name)},
+            fields=["parent,type"])
+
+        for ro in restaurant_opp:
+            # print "ro.type = {}".format(ro)
+            if ro.type == "OD":
+                boolean = True
+        # print "boolean = {}".format(boolean)
     return boolean
 
 
@@ -349,7 +345,6 @@ def add_multiple_assignee(doc, method):
         emails = get_emails_from_role(role)
         print "####### role = {} emails = {}".format(role, emails)
         name = ""
-
         for email in emails:
             if email == "admin@example.com":
                 continue
@@ -445,26 +440,38 @@ def add_multiple_assignee(doc, method):
 
 
 def save_or_update(self):
-    if self.get("__islocal") or not self.name:
+    print "\n"
+    print "in save_or_update"
+    if self.get("__islocal"):
+        d = self.get_valid_dict()
+        print "d.values() = {}".format(frappe.as_json(d.values()))
         self.db_insert()
+        # print "self = {}".format(frappe.as_json(self.parent))
         return
 
     d = self.get_valid_dict()
 
     # don't update name, as case might've been changed
+    idx = d['idx']
+    parent = d['parent']
     name = d['name']
     del d['name']
-    print "////////// in save_or_update"
-    print "name = {} doctype ={}".format(name, self.doctype)
+    del d['parent']
+    del d['idx']
+    # print "name = {} doctype = {} parent = {}".format(name, self.doctype,
+    #   parent)
     # need to fix update
     columns = d.keys()
 
     try:
-        frappe.db.sql("""update `tab{doctype}`
-            set {values} where name=%s""".format(
-            doctype=self.doctype,
-            values=", ".join(["`" + c + "`=%s" for c in columns])),
-                      list(d.values()) + [name])
+        frappe.db.sql(
+            """update `tab{doctype}`
+            set {values} where SUBSTRING_INDEX(%s,  " - ", 1 ) = SUBSTRING_INDEX( parent,  " - ", 1 )  and idx = {idx}"""
+            .format(
+                idx=idx,
+                doctype=self.doctype,
+                values=", ".join(["`" + c + "`=%s" for c in columns])),
+            list(d.values()) + [parent])
     except Exception as e:
         if e.args[0] == 1062 and "Duplicate" in cstr(e.args[1]):
             self.show_unique_validation_message(e)
