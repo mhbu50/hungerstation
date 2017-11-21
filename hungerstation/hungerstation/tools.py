@@ -15,7 +15,6 @@ from frappe.utils import get_url
 from frappe.desk.form.assign_to import add
 from frappe.utils import formatdate,  \
     get_url_to_form
-import pudb
 
 
 @frappe.whitelist()
