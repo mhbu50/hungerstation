@@ -147,7 +147,7 @@ def after_insert_customer(doc, method):
 
         delivery_type = ""
         for ro in restaurant_opp:
-            print "rest type = {}".format(ro.type)
+            # print "rest type = {}".format(ro.type)
             if ro.type == "OD":
                 da = frappe.get_doc({
                     "doctype":
@@ -181,7 +181,8 @@ def after_insert_customer(doc, method):
         # t3.append("depends_on", depend3)
         t3.insert()
 
-        print "project.name = {} doc.name  = {}".format(project.name, doc.name)
+        # print "project.name = {} doc.name  = {}".format(project.name,
+        # doc.name)
 
         depend4 = frappe.get_doc({
             "doctype": "Task Depends On",
@@ -218,17 +219,20 @@ def after_insert_customer(doc, method):
 
 @frappe.whitelist()
 def validate_children(doc, method):
-    original_parent = doc.subject
+
     print "doc = {}".format(frappe.as_json(doc))
     # pudb.set_trace()
     customer_name = ""
     if doc.doctype == "Customer":
         customer_name = doc.name
+        original_parent = doc.name
     else:
         customer_name = doc.project
+        original_parent = doc.subject
     children = doc.get_all_children()
     # print "children = {}".format(frappe.as_json(children))
     for d in children:
+        print "d.doctype = {}".format(d.doctype)
         d.parenttype = "Task"
         d.parent = customer_name + " - Documents Submission"
         row1 = deepcopy(d)
@@ -442,8 +446,11 @@ def save_or_update(self):
     print "\n"
     print "in save_or_update"
     if self.get("__islocal"):
+        if self.doctype == "Restaurant Opp":
+            self.name = ""
+            return
         d = self.get_valid_dict()
-        print "d.values() = {}".format(frappe.as_json(d.values()))
+        # print "d.values() = {}".format(frappe.as_json(d.values()))
         self.db_insert()
         # print "self = {}".format(frappe.as_json(self.parent))
         return
